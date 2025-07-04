@@ -1,5 +1,5 @@
 #include <iostream>
-#include "plasma.h"
+#include "../include/plasma.h"
 
 using namespace std;
 
