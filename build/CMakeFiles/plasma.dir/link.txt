@@ -1,1 +1,0 @@
-/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/plasma.dir/link.d CMakeFiles/plasma.dir/src/main.cpp.o CMakeFiles/plasma.dir/src/diamond_step.cpp.o -o plasma  /usr/lib/libglfw.so.3.4 /usr/lib/libGLX.so /usr/lib/libOpenGL.so
