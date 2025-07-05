@@ -1,7 +1,10 @@
 #pragma once
 
-const int SIZE = 257;
+const int SIZE = 1025;
 
-int diamond_step(int (&plasma_map)[SIZE][SIZE]);
+float displace(float num);
 
+float diamond_step(int x, int y, int half_width, int half_height, float (&plasma_map)[SIZE][SIZE]);
+
+void square_step(int x, int y, int size, int half, float (&plasma_map)[SIZE][SIZE]);
 
