@@ -10,6 +10,6 @@ find_package(glfw3 REQUIRED)
 
 include_directories("include")
 
-add_executable(plasma src/main.cpp src/diamond.cpp src/square.cpp)
+add_executable(plasma src/main.cpp src/diamond_step.cpp)
 
 target_link_libraries(plasma OpenGL::GL glfw)
