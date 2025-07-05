@@ -33,12 +33,13 @@ void computeColor(float c, float& r, float& g, float& b) {
     b = std::max(0.0f, std::min(1.0f, b));
 }
 
-void draw_plasma(float (&plasma_map)[SIZE][SIZE]) {
+void draw_plasma(float (&plasma_map)[SIZE][SIZE], float time_offset) {
     glBegin(GL_POINTS);
     for (int y = 0; y < SIZE; ++y) {
         for (int x = 0; x < SIZE; ++x) {
+			float value = plasma_map[x][y] + time_offset;
             float r, g, b;
-            computeColor(plasma_map[x][y], r, g, b);
+            computeColor(value, r, g, b);
             glColor3f(r, g, b);
             glVertex2i(x, y);
         }
@@ -63,8 +64,8 @@ float random_c() {
 }
 
 int main() {
-    GLFWwindow* window;
     int size = SIZE - 1;
+	float time_offset = 0.0f;
 
     float plasma_map[SIZE][SIZE] = {0};
 
@@ -83,7 +84,7 @@ int main() {
     if (!glfwInit())
         return -1;
 
-    window = glfwCreateWindow(SIZE, SIZE, "Плазма/Plasma", NULL, NULL);
+	GLFWwindow* window = glfwCreateWindow(SIZE, SIZE, "Плазма/Plasma", NULL, NULL);
     if (!window) {
         glfwTerminate();
         return -1;
@@ -92,9 +93,16 @@ int main() {
     glfwMakeContextCurrent(window);
     glOrtho(0, SIZE, 0, SIZE, -1, 1);
 
+	double last_time = glfwGetTime();
+
     while (!glfwWindowShouldClose(window)) {
-        glClear(GL_COLOR_BUFFER_BIT);
-        draw_plasma(plasma_map);
+		double time = glfwGetTime();
+        double delta_time = time - last_time;
+        last_time = time;
+		time_offset += delta_time * 0.1f;
+
+		glClear(GL_COLOR_BUFFER_BIT);
+        draw_plasma(plasma_map, time_offset);
         glfwSwapBuffers(window);
         glfwPollEvents();
     }

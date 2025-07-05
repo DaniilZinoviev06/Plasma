@@ -1,0 +1,3 @@
+/home/daniil/Документы/plasma/build/CMakeFiles/plasma.dir
+/home/daniil/Документы/plasma/build/CMakeFiles/edit_cache.dir
+/home/daniil/Документы/plasma/build/CMakeFiles/rebuild_cache.dir
